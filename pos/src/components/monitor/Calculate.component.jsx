@@ -15,7 +15,8 @@ class Calculate extends React.Component{
 
         return orders.map(order => (
             <li key={order.product.productId} className="list-item title mt-2">
-             {order.product.productName} (<small>฿ {order.product.unitPrice}</small>) X {order.quantity} = {order.product.unitPrice * order.quantity} <span className="btn-danger btn-custom">X</span>
+             {order.product.productName} (<small>฿ {order.product.unitPrice}</small>) X {order.quantity} = {order.product.unitPrice * order.quantity} 
+             &nbsp;<span ><button className="btn-danger btn-custom" onClick={() => this.props.onDelOrder(order.product)}>X</button></span>
             </li>
         ))
     }
@@ -34,8 +35,8 @@ class Calculate extends React.Component{
               {this.showOrder(orders)} 
             </ul>
             <hr />
-            <button className='btn btn-width btn-success title mt-1'>Confirm</button>
-            <button className='btn btn-width btn-danger title mt-1'>Cancle</button>
+            <button className='btn btn-width btn-success title mt-1'onClick={() => this.props.onConfirm()}>Confirm</button>
+            <button className='btn btn-width btn-danger title mt-1' onClick={() => this.props.onCancle()}>Cancle</button>
 
         </div>
         )
